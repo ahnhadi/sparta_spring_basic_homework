@@ -1,9 +1,10 @@
 # sparta_spring_basic_homework
------------------------
+
 
 # ❣프로젝트 요구사항
 
 1.Use Case 그려보기
+
 2. 전체 게시글 목록 조회 API
   - 제목, 작성자 명, 작성 내용, 작성 날짜를 조회
   - 작성 날짜 기준 내림차순 정렬
@@ -23,5 +24,6 @@
 ### Use Case
 
 ![useCase](https://user-images.githubusercontent.com/117059820/206605068-ae096c55-5594-4da2-ab7c-78f082f5aa69.jpg)
+
 ----------------------------
 
