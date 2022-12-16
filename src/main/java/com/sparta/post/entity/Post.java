@@ -17,7 +17,7 @@ public class Post extends Timestamped {
     private Long id;
 
     @Column(nullable = false)  //컬럼 값이 null 반환X -> 반드시 값 존재O
-    private String name;
+    private String username;
 
     @Column(nullable = false)
     private String title;
@@ -30,17 +30,23 @@ public class Post extends Timestamped {
     private String pw;
 
 
+    public Post(String username, String title, String contents, String pw){
+        this.username = username;
+        this.title = title;
+        this.contents = contents;
+        this.pw = pw;
+    }
 
-    public Post(PostRequestDto requestDto){
+    public Post(PostRequestDto requestDto, Long id){
         this.title = requestDto.getTitle();
-        this.name = requestDto.getName();
+        this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
         this.pw = requestDto.getPw();
     }
 
     public void update(PostRequestDto requestDto){
         this.title = requestDto.getTitle();
-        this.name = requestDto.getName();
+        this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
     }
 }

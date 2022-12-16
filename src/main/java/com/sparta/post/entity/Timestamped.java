@@ -9,7 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter
+
 @MappedSuperclass  //상속 시, Column으로 인식
 @EntityListeners(AuditingEntityListener.class)  //생성/수정 시간 자동 업데이트
 public class Timestamped {
@@ -20,6 +20,5 @@ public class Timestamped {
     @LastModifiedDate // 수정 시간
     private LocalDateTime modifiedAt;
 
-    public Timestamped() {
-    }
+
 }
