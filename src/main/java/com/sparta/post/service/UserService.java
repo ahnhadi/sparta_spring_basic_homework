@@ -25,7 +25,7 @@ public class UserService {
     public void signup(SignupRequestDto signupRequestDto) {
         String username = signupRequestDto.getUsername();
         String password = signupRequestDto.getPassword();
-//        String email = signupRequestDto.getEmail();
+
 
         // 회원 중복 확인
         Optional<User> found = userRepository.findByUsername(username);
