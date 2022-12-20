@@ -35,7 +35,7 @@ public class PostService {
             if(jwtUtil.validateToken(token)){
                 claims = jwtUtil.getUserInfoFromToken(token);
             } else {
-                throw  new IllegalArgumentException("Token Error");
+                throw new IllegalArgumentException("Token Error");
             }
         // 토큰에서 가져온 사용자 정보를 사용하여 DB 조회
         User user = userRepository.findByUsername(claims.getSubject()).orElseThrow(
@@ -50,6 +50,8 @@ public class PostService {
             return null;
         }
     }
+
+
     @Transactional  //게시글 수정
     public Long update(Long id, PostRequestDto requestDto) {
         Post post = postRepository.findById(id).orElseThrow(
