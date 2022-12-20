@@ -59,8 +59,7 @@ public class PostController {
 
     @DeleteMapping("/api/posts/{id}")
     @ResponseBody
-    public Long deletePost(@PathVariable Long id,
-                           @RequestBody PostRequestDto requestDto){
+    public Long deletePost(@PathVariable Long id){
         postRepository.deleteById(id);
         return id;
     }
