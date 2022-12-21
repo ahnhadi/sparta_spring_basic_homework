@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @Entity
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class Post extends Timestamped {
 
     @Id  //Id 값, PK로 사용
     @GeneratedValue(strategy = GenerationType.AUTO)  //Id 생성 시 자동으로 증가
-    private Long id;
+    private Long postId;
 
     @Column(nullable = false)  //컬럼 값이 null 반환X -> 반드시 값 존재O
     private String username;
@@ -25,23 +27,24 @@ public class Post extends Timestamped {
     @Column(nullable = false)
     private String contents;
 
-    @Column(nullable = false)
-    @JsonIgnore
-    private String pw;
+    @ManyToOne
+    private User user;
+
+    @OneToMany
+    @OrderBy
+    private List<Comment> comments;
 
 
-    public Post(String username, String title, String contents, String pw){
+    public Post(String username, String title, String contents){
         this.username = username;
         this.title = title;
         this.contents = contents;
-        this.pw = pw;
     }
 
     public Post(PostRequestDto requestDto, Long id){
         this.title = requestDto.getTitle();
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.pw = requestDto.getPw();
     }
 
     public void update(PostRequestDto requestDto){

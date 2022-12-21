@@ -21,16 +21,19 @@ public class UserController {
         return new ModelAndView("signup");
     }
 
+
     @GetMapping("/login")
     public ModelAndView loginPage() {
         return new ModelAndView("login");
     }
+
 
     @PostMapping("/signup")
     public String signup(SignupRequestDto signupRequestDto) {
         userService.signup(signupRequestDto);
         return "redirect:/api/user/login";
     }
+
 
     @ResponseBody
     @PostMapping("/login")

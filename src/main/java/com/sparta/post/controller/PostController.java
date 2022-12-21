@@ -5,16 +5,12 @@ import com.sparta.post.dto.PostResponseDto;
 import com.sparta.post.entity.Post;
 import com.sparta.post.repository.PostRepository;
 import com.sparta.post.service.PostService;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -52,10 +48,12 @@ public class PostController {
     @PutMapping("/api/posts/{id}")
     @ResponseBody
     public Long updatePost(@PathVariable Long id,
-                           @RequestBody PostRequestDto requestDto) {
-        postService.update(id, requestDto);
+                           @RequestBody PostRequestDto requestDto,
+                           HttpServletRequest request) {
+        postService.update(id, requestDto, request);
         return id;
     }
+
 
     @DeleteMapping("/api/posts/{id}")
     @ResponseBody
